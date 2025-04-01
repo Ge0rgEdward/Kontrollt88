@@ -9,12 +9,11 @@ const MealItem = (props) => {
         style: 'currency',
         currency: 'EUR',
     }).format(props.meal.price);
-
     const addToCartHandler = () => {
         cartCtx.addItem({
             id: props.meal.id,
             name: props.meal.name,
-            price: props.meal.price,
+            price: Number(props.meal.price), // Ensure price is a number
             image: props.meal.image,
         });
     };

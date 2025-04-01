@@ -10,18 +10,11 @@ const Meals = () => {
     }, []);
     return (
         <ul id="meals">
-            { meals.map((meal) => (
-                <li key={meal.id}>
-                    <MealItem meal={meal}/>
-                </li>
-            ))
-            }
+            {meals.map((meal) => (
+                <MealItem key={meal.id} meal={meal} />
+            ))}
         </ul>
-
-        
     );
-
-    
 };
 
-export default Meals
+export default Meals;
