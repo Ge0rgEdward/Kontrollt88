@@ -1,9 +1,14 @@
+
+
+
 const fs = require("fs/promises");
 const bodyParser = require("body-parser")
 const path = require("path");
 const express = require("express");
 
 const app = express();
+
+
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "..", "build")));
@@ -17,7 +22,10 @@ app.use((req, res, next) => {
 });
 
 app.get("/meals", async (req, res) => {
-  const meals = "[]" // data should be read from file
+  const mealsPath = path.join(__dirname, "data", "meals.json");
+  const meals = await fs.readFile(mealsPath, "utf-8");
+  console.log(meals);
+    // data should be read from file
   res.json(JSON.parse(meals));
 });
 
@@ -29,4 +37,6 @@ app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
-app.listen(3001);
+app.listen(3001, () => {
+  console.log("Server is running");
+});
