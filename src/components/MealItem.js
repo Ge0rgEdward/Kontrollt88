@@ -1,3 +1,5 @@
+import Button from './UI/Button'
+
 const MealItem = (props) => {
 
         const formattedPirce = new Intl.NumberFormat('en-US', {
@@ -15,7 +17,7 @@ const MealItem = (props) => {
                     <p>{props.meal.description}</p>
                 </div>
                 <p className="meal-item-actions">
-                    <button className="button" >Add to Cart</button>
+                    <Button className="button" textOnly={true} onClick={() => console.log("Cart clicked")} >Add to Cart</Button>
                 </p>
             </article>
         </li>
